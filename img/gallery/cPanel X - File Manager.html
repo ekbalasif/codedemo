@@ -1,0 +1,2291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+<html>
+    <head>
+        <title>cPanel X - File Manager</title>
+        
+
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1472757084/frontend/gl_paper_lantern/3rdparty/bootstrap/optimized/css/bootstrap.min.css" />
+        
+        <link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1386192030/frontend/gl_paper_lantern/3rdparty/ui-fonts/open_sans/optimized/open_sans.min.css" />
+
+        <link rel="stylesheet" href="/cPanel_magic_revision_1438758238/frontend/gl_paper_lantern/filemanager/css/tree_styles2_optimized.css">
+
+        <link href="styled/current_style/styles.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="/cPanel_magic_revision_1423769398/yui-gen/utilities_container/utilities_container.js">
+        </script>
+        
+        <script type="text/javascript" src="/cPanel_magic_revision_1531857182/cjt/cpanel-all-min.js?locale=en&locale_revision=1539639710"></script>
+                <script type="text/javascript" src="/cPanel_magic_revision_1531857182/cjt/cpanel-all-min.js?locale=en&locale_revision=1539639710"></script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1415834657/frontend/gl_paper_lantern/js/filemanager_editors_optimized.js">
+        </script>
+        
+<link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1531857164/cjt/css/ajaxapp-min.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="/cPanel_magic_revision_1423101117/cjt/css/ajaxapp_ie6.css" />
+<![endif]-->
+
+
+        <style type="text/css">
+            html, body, #maintbl {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background: none !important;
+            }
+
+            form { margin: 0 }
+
+            #switch_editor_control img {
+                vertical-align: middle;
+            }
+
+            #codewindow {
+                margin:0;
+                width: 100%;
+                border:0;
+            }
+
+            #maintbl, #maintbl tr, #maintbl td {
+                margin:0;
+                padding:0;
+                border-collapse: collapse;
+                border: none;
+            }
+
+            #maintbl td#codewindow_container {
+                padding: 0 0 0 3px;
+            }
+
+            #tcell, #page {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+            #closebutton {
+                padding-right: 5px;
+                margin-right: 5px;
+                margin-top: 10px;
+            }
+            #helpDiv {
+                margin-bottom: 10px;
+            }
+            .cjt_progress_overlay .bd {
+                background: transparent;
+            }
+
+            /* Suppress inherited styles from global style sheets. */
+            .yui-panel .hd,
+            .yui-panel .bd,
+            .yui-panel .ft {
+                background-image: none;
+                font-size: 100%;
+
+            }
+            .yui-panel .ft {
+                background-color: #CCCCCC;
+            }
+            textarea {
+                font-size: 1.2em;
+                font-family: monospace;
+            }
+
+            /* overrides from tree_styles2_optimized.css */
+            p {
+                line-height: normal;
+            }
+            .header {
+                background: #333333;
+                color: #FFFFFF;
+                padding: 5px;
+            }
+            .button-group .default {
+                background: none !important;
+                padding: 0;
+            }
+        </style>
+
+        <!--[if IE]>
+        <style type="text/css">
+            #codewindow {
+                width: 99.5%;
+            }
+        </style>
+        <![endif]-->
+
+    </head>
+    <body class="nomargins yui-skin-sam">
+        <form action="javascript:void(0)" name="sform" onsubmit="loadfdata('sform_submit'); return false;" class="form-inline">
+            <table border="0" id="maintbl">
+                <tr class="header">
+                    <td style="padding: 5px">
+                        <div style="float:left; width:70%; padding-left:5px;">
+                            <label style="font-weight: 900; font-size:13px;">
+                                Editing:
+                                <input  id="path" name="path" value="/home/iabrubric/public_html/BTAS2019/index.html" class="form-control">
+                            </label>
+                            <label >Encoding:
+                                <select id="charset" name="charset" class="form-control">
+                                
+                                    
+                                        <option value="ansi_x3.110-1983" >
+                                            ansi_x3.110-1983
+                                        </option>
+                                    
+                                        <option value="ansi_x3.4-1968" >
+                                            ansi_x3.4-1968
+                                        </option>
+                                    
+                                        <option value="armscii-8" >
+                                            armscii-8
+                                        </option>
+                                    
+                                        <option value="asmo_449" >
+                                            asmo_449
+                                        </option>
+                                    
+                                        <option value="big5" >
+                                            big5
+                                        </option>
+                                    
+                                        <option value="big5-hkscs" >
+                                            big5-hkscs
+                                        </option>
+                                    
+                                        <option value="brf" >
+                                            brf
+                                        </option>
+                                    
+                                        <option value="bs_4730" >
+                                            bs_4730
+                                        </option>
+                                    
+                                        <option value="bs_viewdata" >
+                                            bs_viewdata
+                                        </option>
+                                    
+                                        <option value="cp10007" >
+                                            cp10007
+                                        </option>
+                                    
+                                        <option value="cp1125" >
+                                            cp1125
+                                        </option>
+                                    
+                                        <option value="cp1250" >
+                                            cp1250
+                                        </option>
+                                    
+                                        <option value="cp1253" >
+                                            cp1253
+                                        </option>
+                                    
+                                        <option value="cp1254" >
+                                            cp1254
+                                        </option>
+                                    
+                                        <option value="cp1255" >
+                                            cp1255
+                                        </option>
+                                    
+                                        <option value="cp1256" >
+                                            cp1256
+                                        </option>
+                                    
+                                        <option value="cp1257" >
+                                            cp1257
+                                        </option>
+                                    
+                                        <option value="cp1258" >
+                                            cp1258
+                                        </option>
+                                    
+                                        <option value="cp737" >
+                                            cp737
+                                        </option>
+                                    
+                                        <option value="cp775" >
+                                            cp775
+                                        </option>
+                                    
+                                        <option value="csa_z243.4-1985-1" >
+                                            csa_z243.4-1985-1
+                                        </option>
+                                    
+                                        <option value="csa_z243.4-1985-2" >
+                                            csa_z243.4-1985-2
+                                        </option>
+                                    
+                                        <option value="csa_z243.4-1985-gr" >
+                                            csa_z243.4-1985-gr
+                                        </option>
+                                    
+                                        <option value="csn_369103" >
+                                            csn_369103
+                                        </option>
+                                    
+                                        <option value="cwi" >
+                                            cwi
+                                        </option>
+                                    
+                                        <option value="dec-mcs" >
+                                            dec-mcs
+                                        </option>
+                                    
+                                        <option value="din_66003" >
+                                            din_66003
+                                        </option>
+                                    
+                                        <option value="ds_2089" >
+                                            ds_2089
+                                        </option>
+                                    
+                                        <option value="ebcdic-at-de" >
+                                            ebcdic-at-de
+                                        </option>
+                                    
+                                        <option value="ebcdic-at-de-a" >
+                                            ebcdic-at-de-a
+                                        </option>
+                                    
+                                        <option value="ebcdic-ca-fr" >
+                                            ebcdic-ca-fr
+                                        </option>
+                                    
+                                        <option value="ebcdic-dk-no" >
+                                            ebcdic-dk-no
+                                        </option>
+                                    
+                                        <option value="ebcdic-dk-no-a" >
+                                            ebcdic-dk-no-a
+                                        </option>
+                                    
+                                        <option value="ebcdic-es" >
+                                            ebcdic-es
+                                        </option>
+                                    
+                                        <option value="ebcdic-es-a" >
+                                            ebcdic-es-a
+                                        </option>
+                                    
+                                        <option value="ebcdic-es-s" >
+                                            ebcdic-es-s
+                                        </option>
+                                    
+                                        <option value="ebcdic-fi-se" >
+                                            ebcdic-fi-se
+                                        </option>
+                                    
+                                        <option value="ebcdic-fi-se-a" >
+                                            ebcdic-fi-se-a
+                                        </option>
+                                    
+                                        <option value="ebcdic-fr" >
+                                            ebcdic-fr
+                                        </option>
+                                    
+                                        <option value="ebcdic-is-friss" >
+                                            ebcdic-is-friss
+                                        </option>
+                                    
+                                        <option value="ebcdic-it" >
+                                            ebcdic-it
+                                        </option>
+                                    
+                                        <option value="ebcdic-pt" >
+                                            ebcdic-pt
+                                        </option>
+                                    
+                                        <option value="ebcdic-uk" >
+                                            ebcdic-uk
+                                        </option>
+                                    
+                                        <option value="ebcdic-us" >
+                                            ebcdic-us
+                                        </option>
+                                    
+                                        <option value="ecma-cyrillic" >
+                                            ecma-cyrillic
+                                        </option>
+                                    
+                                        <option value="es" >
+                                            es
+                                        </option>
+                                    
+                                        <option value="es2" >
+                                            es2
+                                        </option>
+                                    
+                                        <option value="euc-jisx0213" >
+                                            euc-jisx0213
+                                        </option>
+                                    
+                                        <option value="euc-jp" >
+                                            euc-jp
+                                        </option>
+                                    
+                                        <option value="euc-jp-ms" >
+                                            euc-jp-ms
+                                        </option>
+                                    
+                                        <option value="euc-kr" >
+                                            euc-kr
+                                        </option>
+                                    
+                                        <option value="euc-tw" >
+                                            euc-tw
+                                        </option>
+                                    
+                                        <option value="gb18030" >
+                                            gb18030
+                                        </option>
+                                    
+                                        <option value="gb2312" >
+                                            gb2312
+                                        </option>
+                                    
+                                        <option value="gb_1988-80" >
+                                            gb_1988-80
+                                        </option>
+                                    
+                                        <option value="gbk" >
+                                            gbk
+                                        </option>
+                                    
+                                        <option value="georgian-academy" >
+                                            georgian-academy
+                                        </option>
+                                    
+                                        <option value="georgian-ps" >
+                                            georgian-ps
+                                        </option>
+                                    
+                                        <option value="gost_19768-74" >
+                                            gost_19768-74
+                                        </option>
+                                    
+                                        <option value="greek-ccitt" >
+                                            greek-ccitt
+                                        </option>
+                                    
+                                        <option value="greek7" >
+                                            greek7
+                                        </option>
+                                    
+                                        <option value="greek7-old" >
+                                            greek7-old
+                                        </option>
+                                    
+                                        <option value="gsm03.38" >
+                                            gsm03.38
+                                        </option>
+                                    
+                                        <option value="hp-greek8" >
+                                            hp-greek8
+                                        </option>
+                                    
+                                        <option value="hp-roman8" >
+                                            hp-roman8
+                                        </option>
+                                    
+                                        <option value="hp-roman9" >
+                                            hp-roman9
+                                        </option>
+                                    
+                                        <option value="hp-thai8" >
+                                            hp-thai8
+                                        </option>
+                                    
+                                        <option value="hp-turkish8" >
+                                            hp-turkish8
+                                        </option>
+                                    
+                                        <option value="hz-gb-2312" >
+                                            hz-gb-2312
+                                        </option>
+                                    
+                                        <option value="ibm037" >
+                                            ibm037
+                                        </option>
+                                    
+                                        <option value="ibm038" >
+                                            ibm038
+                                        </option>
+                                    
+                                        <option value="ibm1004" >
+                                            ibm1004
+                                        </option>
+                                    
+                                        <option value="ibm1026" >
+                                            ibm1026
+                                        </option>
+                                    
+                                        <option value="ibm1047" >
+                                            ibm1047
+                                        </option>
+                                    
+                                        <option value="ibm1124" >
+                                            ibm1124
+                                        </option>
+                                    
+                                        <option value="ibm1129" >
+                                            ibm1129
+                                        </option>
+                                    
+                                        <option value="ibm1132" >
+                                            ibm1132
+                                        </option>
+                                    
+                                        <option value="ibm1133" >
+                                            ibm1133
+                                        </option>
+                                    
+                                        <option value="ibm1160" >
+                                            ibm1160
+                                        </option>
+                                    
+                                        <option value="ibm1161" >
+                                            ibm1161
+                                        </option>
+                                    
+                                        <option value="ibm1162" >
+                                            ibm1162
+                                        </option>
+                                    
+                                        <option value="ibm1163" >
+                                            ibm1163
+                                        </option>
+                                    
+                                        <option value="ibm1164" >
+                                            ibm1164
+                                        </option>
+                                    
+                                        <option value="ibm256" >
+                                            ibm256
+                                        </option>
+                                    
+                                        <option value="ibm273" >
+                                            ibm273
+                                        </option>
+                                    
+                                        <option value="ibm274" >
+                                            ibm274
+                                        </option>
+                                    
+                                        <option value="ibm275" >
+                                            ibm275
+                                        </option>
+                                    
+                                        <option value="ibm277" >
+                                            ibm277
+                                        </option>
+                                    
+                                        <option value="ibm278" >
+                                            ibm278
+                                        </option>
+                                    
+                                        <option value="ibm280" >
+                                            ibm280
+                                        </option>
+                                    
+                                        <option value="ibm281" >
+                                            ibm281
+                                        </option>
+                                    
+                                        <option value="ibm284" >
+                                            ibm284
+                                        </option>
+                                    
+                                        <option value="ibm285" >
+                                            ibm285
+                                        </option>
+                                    
+                                        <option value="ibm290" >
+                                            ibm290
+                                        </option>
+                                    
+                                        <option value="ibm297" >
+                                            ibm297
+                                        </option>
+                                    
+                                        <option value="ibm420" >
+                                            ibm420
+                                        </option>
+                                    
+                                        <option value="ibm423" >
+                                            ibm423
+                                        </option>
+                                    
+                                        <option value="ibm424" >
+                                            ibm424
+                                        </option>
+                                    
+                                        <option value="ibm437" >
+                                            ibm437
+                                        </option>
+                                    
+                                        <option value="ibm500" >
+                                            ibm500
+                                        </option>
+                                    
+                                        <option value="ibm850" >
+                                            ibm850
+                                        </option>
+                                    
+                                        <option value="ibm851" >
+                                            ibm851
+                                        </option>
+                                    
+                                        <option value="ibm852" >
+                                            ibm852
+                                        </option>
+                                    
+                                        <option value="ibm855" >
+                                            ibm855
+                                        </option>
+                                    
+                                        <option value="ibm856" >
+                                            ibm856
+                                        </option>
+                                    
+                                        <option value="ibm857" >
+                                            ibm857
+                                        </option>
+                                    
+                                        <option value="ibm860" >
+                                            ibm860
+                                        </option>
+                                    
+                                        <option value="ibm861" >
+                                            ibm861
+                                        </option>
+                                    
+                                        <option value="ibm862" >
+                                            ibm862
+                                        </option>
+                                    
+                                        <option value="ibm863" >
+                                            ibm863
+                                        </option>
+                                    
+                                        <option value="ibm864" >
+                                            ibm864
+                                        </option>
+                                    
+                                        <option value="ibm865" >
+                                            ibm865
+                                        </option>
+                                    
+                                        <option value="ibm866" >
+                                            ibm866
+                                        </option>
+                                    
+                                        <option value="ibm866nav" >
+                                            ibm866nav
+                                        </option>
+                                    
+                                        <option value="ibm868" >
+                                            ibm868
+                                        </option>
+                                    
+                                        <option value="ibm869" >
+                                            ibm869
+                                        </option>
+                                    
+                                        <option value="ibm870" >
+                                            ibm870
+                                        </option>
+                                    
+                                        <option value="ibm871" >
+                                            ibm871
+                                        </option>
+                                    
+                                        <option value="ibm874" >
+                                            ibm874
+                                        </option>
+                                    
+                                        <option value="ibm875" >
+                                            ibm875
+                                        </option>
+                                    
+                                        <option value="ibm880" >
+                                            ibm880
+                                        </option>
+                                    
+                                        <option value="ibm891" >
+                                            ibm891
+                                        </option>
+                                    
+                                        <option value="ibm903" >
+                                            ibm903
+                                        </option>
+                                    
+                                        <option value="ibm904" >
+                                            ibm904
+                                        </option>
+                                    
+                                        <option value="ibm905" >
+                                            ibm905
+                                        </option>
+                                    
+                                        <option value="ibm918" >
+                                            ibm918
+                                        </option>
+                                    
+                                        <option value="ibm922" >
+                                            ibm922
+                                        </option>
+                                    
+                                        <option value="iec_p27-1" >
+                                            iec_p27-1
+                                        </option>
+                                    
+                                        <option value="inis" >
+                                            inis
+                                        </option>
+                                    
+                                        <option value="inis-8" >
+                                            inis-8
+                                        </option>
+                                    
+                                        <option value="inis-cyrillic" >
+                                            inis-cyrillic
+                                        </option>
+                                    
+                                        <option value="invariant" >
+                                            invariant
+                                        </option>
+                                    
+                                        <option value="isiri-3342" >
+                                            isiri-3342
+                                        </option>
+                                    
+                                        <option value="iso-8859-1" >
+                                            iso-8859-1
+                                        </option>
+                                    
+                                        <option value="iso-8859-10" >
+                                            iso-8859-10
+                                        </option>
+                                    
+                                        <option value="iso-8859-11" >
+                                            iso-8859-11
+                                        </option>
+                                    
+                                        <option value="iso-8859-13" >
+                                            iso-8859-13
+                                        </option>
+                                    
+                                        <option value="iso-8859-14" >
+                                            iso-8859-14
+                                        </option>
+                                    
+                                        <option value="iso-8859-15" >
+                                            iso-8859-15
+                                        </option>
+                                    
+                                        <option value="iso-8859-16" >
+                                            iso-8859-16
+                                        </option>
+                                    
+                                        <option value="iso-8859-2" >
+                                            iso-8859-2
+                                        </option>
+                                    
+                                        <option value="iso-8859-3" >
+                                            iso-8859-3
+                                        </option>
+                                    
+                                        <option value="iso-8859-4" >
+                                            iso-8859-4
+                                        </option>
+                                    
+                                        <option value="iso-8859-5" >
+                                            iso-8859-5
+                                        </option>
+                                    
+                                        <option value="iso-8859-6" >
+                                            iso-8859-6
+                                        </option>
+                                    
+                                        <option value="iso-8859-7" >
+                                            iso-8859-7
+                                        </option>
+                                    
+                                        <option value="iso-8859-8" >
+                                            iso-8859-8
+                                        </option>
+                                    
+                                        <option value="iso-8859-9" >
+                                            iso-8859-9
+                                        </option>
+                                    
+                                        <option value="iso-8859-9e" >
+                                            iso-8859-9e
+                                        </option>
+                                    
+                                        <option value="iso-ir-197" >
+                                            iso-ir-197
+                                        </option>
+                                    
+                                        <option value="iso-ir-209" >
+                                            iso-ir-209
+                                        </option>
+                                    
+                                        <option value="iso-ir-90" >
+                                            iso-ir-90
+                                        </option>
+                                    
+                                        <option value="iso_10367-box" >
+                                            iso_10367-box
+                                        </option>
+                                    
+                                        <option value="iso_10646" >
+                                            iso_10646
+                                        </option>
+                                    
+                                        <option value="iso_11548-1" >
+                                            iso_11548-1
+                                        </option>
+                                    
+                                        <option value="iso_2033-1983" >
+                                            iso_2033-1983
+                                        </option>
+                                    
+                                        <option value="iso_5427" >
+                                            iso_5427
+                                        </option>
+                                    
+                                        <option value="iso_5427-ext" >
+                                            iso_5427-ext
+                                        </option>
+                                    
+                                        <option value="iso_5428" >
+                                            iso_5428
+                                        </option>
+                                    
+                                        <option value="iso_646.basic" >
+                                            iso_646.basic
+                                        </option>
+                                    
+                                        <option value="iso_646.irv" >
+                                            iso_646.irv
+                                        </option>
+                                    
+                                        <option value="iso_6937" >
+                                            iso_6937
+                                        </option>
+                                    
+                                        <option value="iso_6937-2-25" >
+                                            iso_6937-2-25
+                                        </option>
+                                    
+                                        <option value="iso_6937-2-add" >
+                                            iso_6937-2-add
+                                        </option>
+                                    
+                                        <option value="iso_8859-1,gl" >
+                                            iso_8859-1,gl
+                                        </option>
+                                    
+                                        <option value="iso_8859-supp" >
+                                            iso_8859-supp
+                                        </option>
+                                    
+                                        <option value="it" >
+                                            it
+                                        </option>
+                                    
+                                        <option value="jis_c6220-1969-jp" >
+                                            jis_c6220-1969-jp
+                                        </option>
+                                    
+                                        <option value="jis_c6220-1969-ro" >
+                                            jis_c6220-1969-ro
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-a" >
+                                            jis_c6229-1984-a
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-b" >
+                                            jis_c6229-1984-b
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-b-add" >
+                                            jis_c6229-1984-b-add
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-hand" >
+                                            jis_c6229-1984-hand
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-hand-add" >
+                                            jis_c6229-1984-hand-add
+                                        </option>
+                                    
+                                        <option value="jis_c6229-1984-kana" >
+                                            jis_c6229-1984-kana
+                                        </option>
+                                    
+                                        <option value="jis_x0201" >
+                                            jis_x0201
+                                        </option>
+                                    
+                                        <option value="johab" >
+                                            johab
+                                        </option>
+                                    
+                                        <option value="jus_i.b1.002" >
+                                            jus_i.b1.002
+                                        </option>
+                                    
+                                        <option value="jus_i.b1.003-mac" >
+                                            jus_i.b1.003-mac
+                                        </option>
+                                    
+                                        <option value="jus_i.b1.003-serb" >
+                                            jus_i.b1.003-serb
+                                        </option>
+                                    
+                                        <option value="koi-8" >
+                                            koi-8
+                                        </option>
+                                    
+                                        <option value="koi8-r" >
+                                            koi8-r
+                                        </option>
+                                    
+                                        <option value="koi8-ru" >
+                                            koi8-ru
+                                        </option>
+                                    
+                                        <option value="koi8-t" >
+                                            koi8-t
+                                        </option>
+                                    
+                                        <option value="koi8-u" >
+                                            koi8-u
+                                        </option>
+                                    
+                                        <option value="ks_c_5601-1987" >
+                                            ks_c_5601-1987
+                                        </option>
+                                    
+                                        <option value="ksc5636" >
+                                            ksc5636
+                                        </option>
+                                    
+                                        <option value="latin-greek" >
+                                            latin-greek
+                                        </option>
+                                    
+                                        <option value="latin-greek-1" >
+                                            latin-greek-1
+                                        </option>
+                                    
+                                        <option value="mac-centraleurope" >
+                                            mac-centraleurope
+                                        </option>
+                                    
+                                        <option value="mac-cyrillic" >
+                                            mac-cyrillic
+                                        </option>
+                                    
+                                        <option value="mac-is" >
+                                            mac-is
+                                        </option>
+                                    
+                                        <option value="mac-sami" >
+                                            mac-sami
+                                        </option>
+                                    
+                                        <option value="mac-uk" >
+                                            mac-uk
+                                        </option>
+                                    
+                                        <option value="macintosh" >
+                                            macintosh
+                                        </option>
+                                    
+                                        <option value="mik" >
+                                            mik
+                                        </option>
+                                    
+                                        <option value="msz_7795.3" >
+                                            msz_7795.3
+                                        </option>
+                                    
+                                        <option value="nats-dano" >
+                                            nats-dano
+                                        </option>
+                                    
+                                        <option value="nats-dano-add" >
+                                            nats-dano-add
+                                        </option>
+                                    
+                                        <option value="nats-sefi" >
+                                            nats-sefi
+                                        </option>
+                                    
+                                        <option value="nats-sefi-add" >
+                                            nats-sefi-add
+                                        </option>
+                                    
+                                        <option value="nc_nc00-10" >
+                                            nc_nc00-10
+                                        </option>
+                                    
+                                        <option value="nextstep" >
+                                            nextstep
+                                        </option>
+                                    
+                                        <option value="nf_z_62-010" >
+                                            nf_z_62-010
+                                        </option>
+                                    
+                                        <option value="nf_z_62-010_1973" >
+                                            nf_z_62-010_1973
+                                        </option>
+                                    
+                                        <option value="ns_4551-1" >
+                                            ns_4551-1
+                                        </option>
+                                    
+                                        <option value="ns_4551-2" >
+                                            ns_4551-2
+                                        </option>
+                                    
+                                        <option value="pt" >
+                                            pt
+                                        </option>
+                                    
+                                        <option value="pt154" >
+                                            pt154
+                                        </option>
+                                    
+                                        <option value="pt2" >
+                                            pt2
+                                        </option>
+                                    
+                                        <option value="rk1048" >
+                                            rk1048
+                                        </option>
+                                    
+                                        <option value="sami" >
+                                            sami
+                                        </option>
+                                    
+                                        <option value="sami-ws2" >
+                                            sami-ws2
+                                        </option>
+                                    
+                                        <option value="sen_850200_b" >
+                                            sen_850200_b
+                                        </option>
+                                    
+                                        <option value="sen_850200_c" >
+                                            sen_850200_c
+                                        </option>
+                                    
+                                        <option value="shift_jis" >
+                                            shift_jis
+                                        </option>
+                                    
+                                        <option value="shift_jisx0213" >
+                                            shift_jisx0213
+                                        </option>
+                                    
+                                        <option value="t.101-g2" >
+                                            t.101-g2
+                                        </option>
+                                    
+                                        <option value="t.61-7bit" >
+                                            t.61-7bit
+                                        </option>
+                                    
+                                        <option value="t.61-8bit" >
+                                            t.61-8bit
+                                        </option>
+                                    
+                                        <option value="tcvn5712-1" >
+                                            tcvn5712-1
+                                        </option>
+                                    
+                                        <option value="tis-620" >
+                                            tis-620
+                                        </option>
+                                    
+                                        <option value="tscii" >
+                                            tscii
+                                        </option>
+                                    
+                                        <option value="us-ascii" >
+                                            us-ascii
+                                        </option>
+                                    
+                                        <option value="utf-7" >
+                                            utf-7
+                                        </option>
+                                    
+                                        <option value="utf-8" selected>
+                                            utf-8
+                                        </option>
+                                    
+                                        <option value="videotex-suppl" >
+                                            videotex-suppl
+                                        </option>
+                                    
+                                        <option value="viscii" >
+                                            viscii
+                                        </option>
+                                    
+                                        <option value="windows-1251" >
+                                            windows-1251
+                                        </option>
+                                    
+                                        <option value="windows-1252" >
+                                            windows-1252
+                                        </option>
+                                    
+                                        <option value="windows-31j" >
+                                            windows-31j
+                                        </option>
+                                    
+                                
+                                </select>
+                            </label>
+                            <input type="button" onclick="loadfile(this);" class="btn btn-default" value="Re-open" id="btnReOpen">
+                        </div>
+                        <div style="float:right;padding-right:5px">
+                            <button type="button" class="btn btn-default" id="switch_editor_control" onclick="try {toggle_EditArea(this)} catch(e) {} return false">
+                                
+                                    Use Text Editor
+                                
+                            </button>
+                            &nbsp;
+                            <input type="button" onclick="confirm_close(this);" class="btn btn-default" value="Close" id="btnClose" />
+                            <button type="submit" id="sform_submit" class="btn btn-primary" style="font-weight:bold">
+                                Save Changes
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="codewindow_container">
+                        
+                            <textarea id="codewindow" class="codepress " style="visibility:hidden" wrap="soft" name="page">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;BTAS 2019 - Bootstrap Event Template&lt;/title&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;keywords&quot;&gt;
+  &lt;meta content=&quot;&quot; name=&quot;description&quot;&gt;
+
+  &lt;!-- Favicons --&gt;
+  &lt;link href=&quot;img/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;link href=&quot;img/apple-touch-icon.png&quot; rel=&quot;apple-touch-icon&quot;&gt;
+
+  &lt;!-- Google Fonts --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Bootstrap CSS File --&gt;
+  &lt;link href=&quot;lib/bootstrap/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Libraries CSS Files --&gt;
+  &lt;link href=&quot;lib/font-awesome/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;lib/animate/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;lib/venobox/venobox.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;lib/owlcarousel/assets/owl.carousel.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- Main Stylesheet File --&gt;
+  &lt;link href=&quot;css/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+  &lt;!-- =======================================================
+    Theme Name: TheEvent
+    Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;!--==========================
+    Header
+  ============================--&gt;
+  &lt;header id=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+      &lt;div id=&quot;logo&quot; class=&quot;pull-left&quot;&gt;
+        &lt;!-- Uncomment below if you prefer to use a text logo --&gt;
+        &lt;!-- &lt;h1&gt;&lt;a href=&quot;#main&quot;&gt;C&lt;span&gt;o&lt;/span&gt;nf&lt;/a&gt;&lt;/h1&gt;--&gt;
+        &lt;!-- &lt;a href=&quot;#intro&quot; class=&quot;scrollto&quot;&gt;&lt;img src=&quot;img/logo.jpg&quot; alt=&quot;&quot; title=&quot;&quot;&gt;&lt;/a&gt; --&gt;
+        &lt;h3 style=&quot;font-family: Times new;font-size: 54px;font-weight: bold;color: #0e1b4d;text-align: left;&quot;&gt;BTAS 2019&lt;/h3&gt;
+      &lt;/div&gt;
+
+      &lt;nav id=&quot;nav-menu-container&quot;&gt;
+        &lt;ul class=&quot;nav-menu&quot;&gt;
+          &lt;li class=&quot;menu-active&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;organizers.html&quot;&gt;Organizers&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;submission.html&quot;&gt;Submission&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;Programme.html&quot;&gt;Programme&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;logistics.html&quot;&gt;Logistics&lt;/a&gt;&lt;/li&gt;
+          &lt;!-- &lt;li&gt;&lt;a href=&quot;#hotels&quot;&gt;Hotels&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;  --&gt;
+          &lt;!-- &lt;li&gt;&lt;a href=&quot;#sponsors&quot;&gt;Sponsors&lt;/a&gt;&lt;/li&gt; --&gt;
+          &lt;!--&lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt; --&gt;
+          &lt;!-- &lt;li class=&quot;buy-tickets&quot;&gt;&lt;a href=&quot;#buy-tickets&quot;&gt;Buy Tickets&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt; --&gt;
+      &lt;/nav&gt;&lt;!-- #nav-menu-container --&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;&lt;!-- #header --&gt;
+
+  &lt;!--==========================
+    Intro Section
+  ============================--&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4&quot;  style=&#39;padding-right:0px;border-right: 5px solid red;&#39;&gt;
+      &lt;section id=&quot;about&quot;&gt;
+        &lt;div class=&quot;intro-container wow fadeIn&quot;&gt;
+           &lt;h2 style=&quot;color: #0e1b4d ;padding-left: 9px;&quot;&gt;About&lt;/h2&gt;
+            &lt;p style=&quot; color: #0e1b4d ; font-size: 18px;padding-left: 9px;&quot;&gt;BTAS is one of the premier conferences on biometric recognition and includes sensors, image and signal processing, pattern recognition, artificial intelligence, and statistics. BTAS 2019 will be co-located with the FedID.&lt;/p&gt;
+          &lt;!-- &lt;a href=&quot;https://www.youtube.com/watch?v=jDDaplaOz7Q&quot; class=&quot;venobox play-btn mb-4&quot; data-vbtype=&quot;video&quot;
+            data-autoplay=&quot;true&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#about&quot; class=&quot;about-btn scrollto&quot;&gt;About The Event&lt;/a&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;col-lg-8&quot; style=&#39;padding-right:0px;padding-left:0px;&#39;&gt;
+      &lt;section id=&quot;intro&quot;&gt;
+        &lt;div class=&quot;intro-container wow fadeIn&quot;&gt;
+          &lt;h3 style=&quot;font-size: 27px; color: white;&quot;class=&quot;mb-4 pb-0&quot;&gt;10th IEEE International Conference on&lt;br&gt;&lt;span&gt;Biometrics: Theory, Applications and Systems (BTAS)&lt;/span&gt;&lt;/h3&gt;
+          &lt;p class=&quot;mb-4 pb-0&quot;&gt;23-26 September 2019, Tampa, Florida&lt;/p&gt;
+          &lt;!-- &lt;a href=&quot;https://www.youtube.com/watch?v=jDDaplaOz7Q&quot; class=&quot;venobox play-btn mb-4&quot; data-vbtype=&quot;video&quot;
+            data-autoplay=&quot;true&quot;&gt;&lt;/a&gt;
+          &lt;a href=&quot;#about&quot; class=&quot;about-btn scrollto&quot;&gt;About The Event&lt;/a&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+     
+  &lt;/div&gt;
+
+  &lt;main id=&quot;main&quot;&gt;
+
+    &lt;!--==========================
+      About Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&#39;about1&#39;&gt;
+      &lt;div class=&quot;container&quot; style=&#39;padding-right:0px;&#39;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col-lg-8&quot;&gt;
+            &lt;h3&gt;Where&lt;/h3&gt;
+            &lt;p&gt;Clarkson University and University of South Florida, Tampa&lt;/p&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;col-lg-4&quot;&gt;
+            &lt;h3&gt;When&lt;/h3&gt;
+            &lt;p&gt;Monday to Thursday&lt;br&gt;23-26 September, 2019&lt;/p&gt;
+          &lt;/div&gt;
+        
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt; --&gt;
+
+    
+
+    &lt;!--==========================
+      Schedule Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&quot;schedule&quot; class=&quot;section-with-bg&quot;&gt;
+      &lt;div class=&quot;container wow fadeInUp&quot;&gt;
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Event Schedule&lt;/h2&gt;
+          &lt;p&gt;Here is our event schedule&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; href=&quot;#day-1&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Day 1&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#day-2&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Day 2&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#day-3&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Day 3&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;h3 class=&quot;sub-heading&quot;&gt;Voluptatem nulla veniam soluta et corrupti consequatur neque eveniet officia. Eius
+          necessitatibus voluptatem quis labore perspiciatis quia.&lt;/h3&gt;
+
+        &lt;div class=&quot;tab-content row justify-content-center&quot;&gt; --&gt;
+
+          &lt;!-- Schdule Day 1 --&gt;
+          &lt;!-- &lt;div role=&quot;tabpanel&quot; class=&quot;col-lg-9 tab-pane fade show active&quot; id=&quot;day-1&quot;&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;09:30 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;h4&gt;Registration&lt;/h4&gt;
+                &lt;p&gt;Fugit voluptas iusto maiores temporibus autem numquam magnam.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;10:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/1.jpg&quot; alt=&quot;Brenden Legros&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Keynote &lt;span&gt;Brenden Legros&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Facere provident incidunt quos voluptas.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;11:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/2.jpg&quot; alt=&quot;Hubert Hirthe&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Et voluptatem iusto dicta nobis. &lt;span&gt;Hubert Hirthe&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Maiores dignissimos neque qui cum accusantium ut sit sint inventore.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;12:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/3.jpg&quot; alt=&quot;Cole Emmerich&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Explicabo et rerum quis et ut ea. &lt;span&gt;Cole Emmerich&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Veniam accusantium laborum nihil eos eaque accusantium aspernatur.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;02:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/4.jpg&quot; alt=&quot;Jack Christiansen&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Qui non qui vel amet culpa sequi. &lt;span&gt;Jack Christiansen&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Nam ex distinctio voluptatem doloremque suscipit iusto.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;03:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/5.jpg&quot; alt=&quot;Alejandrin Littel&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quos ratione neque expedita asperiores. &lt;span&gt;Alejandrin Littel&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Eligendi quo eveniet est nobis et ad temporibus odio quo.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;04:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/6.jpg&quot; alt=&quot;Willow Trantow&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quo qui praesentium nesciunt &lt;span&gt;Willow Trantow&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Voluptatem et alias dolorum est aut sit enim neque veritatis.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt; --&gt;
+          &lt;!-- End Schdule Day 1 --&gt;
+
+          &lt;!-- Schdule Day 2 --&gt;
+          &lt;!-- &lt;div role=&quot;tabpanel&quot; class=&quot;col-lg-9  tab-pane fade&quot; id=&quot;day-2&quot;&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;10:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/1.jpg&quot; alt=&quot;Brenden Legros&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Libero corrupti explicabo itaque. &lt;span&gt;Brenden Legros&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Facere provident incidunt quos voluptas.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;11:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/2.jpg&quot; alt=&quot;Hubert Hirthe&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Et voluptatem iusto dicta nobis. &lt;span&gt;Hubert Hirthe&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Maiores dignissimos neque qui cum accusantium ut sit sint inventore.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;12:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/3.jpg&quot; alt=&quot;Cole Emmerich&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Explicabo et rerum quis et ut ea. &lt;span&gt;Cole Emmerich&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Veniam accusantium laborum nihil eos eaque accusantium aspernatur.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;02:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/4.jpg&quot; alt=&quot;Jack Christiansen&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Qui non qui vel amet culpa sequi. &lt;span&gt;Jack Christiansen&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Nam ex distinctio voluptatem doloremque suscipit iusto.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;03:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/5.jpg&quot; alt=&quot;Alejandrin Littel&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quos ratione neque expedita asperiores. &lt;span&gt;Alejandrin Littel&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Eligendi quo eveniet est nobis et ad temporibus odio quo.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;04:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/6.jpg&quot; alt=&quot;Willow Trantow&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quo qui praesentium nesciunt &lt;span&gt;Willow Trantow&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Voluptatem et alias dolorum est aut sit enim neque veritatis.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt; --&gt;
+          &lt;!-- End Schdule Day 2 --&gt;
+
+          &lt;!-- Schdule Day 3 --&gt;
+          &lt;!-- &lt;div role=&quot;tabpanel&quot; class=&quot;col-lg-9  tab-pane fade&quot; id=&quot;day-3&quot;&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;10:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/2.jpg&quot; alt=&quot;Hubert Hirthe&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Et voluptatem iusto dicta nobis. &lt;span&gt;Hubert Hirthe&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Maiores dignissimos neque qui cum accusantium ut sit sint inventore.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;11:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/3.jpg&quot; alt=&quot;Cole Emmerich&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Explicabo et rerum quis et ut ea. &lt;span&gt;Cole Emmerich&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Veniam accusantium laborum nihil eos eaque accusantium aspernatur.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;12:00 AM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/1.jpg&quot; alt=&quot;Brenden Legros&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Libero corrupti explicabo itaque. &lt;span&gt;Brenden Legros&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Facere provident incidunt quos voluptas.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;02:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/4.jpg&quot; alt=&quot;Jack Christiansen&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Qui non qui vel amet culpa sequi. &lt;span&gt;Jack Christiansen&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Nam ex distinctio voluptatem doloremque suscipit iusto.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;03:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/5.jpg&quot; alt=&quot;Alejandrin Littel&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quos ratione neque expedita asperiores. &lt;span&gt;Alejandrin Littel&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Eligendi quo eveniet est nobis et ad temporibus odio quo.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row schedule-item&quot;&gt;
+              &lt;div class=&quot;col-md-2&quot;&gt;&lt;time&gt;04:00 PM&lt;/time&gt;&lt;/div&gt;
+              &lt;div class=&quot;col-md-10&quot;&gt;
+                &lt;div class=&quot;speaker&quot;&gt;
+                  &lt;img src=&quot;img/speakers/6.jpg&quot; alt=&quot;Willow Trantow&quot;&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;Quo qui praesentium nesciunt &lt;span&gt;Willow Trantow&lt;/span&gt;&lt;/h4&gt;
+                &lt;p&gt;Voluptatem et alias dolorum est aut sit enim neque veritatis.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt; --&gt;
+          &lt;!-- End Schdule Day 2 --&gt;
+
+        &lt;!-- &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+ --&gt;
+    &lt;!--==========================
+      Venue Section
+    ============================--&gt;
+    &lt;div&gt;
+    &lt;section id=&quot;venue&quot; class=&quot;section-with-bg wow fadeInUp&quot;&gt;
+
+      &lt;div class=&quot;container-fluid&quot;&gt;
+
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Event Venue&lt;/h2&gt;
+          &lt;!-- &lt;p&gt;Event venue location info and gallery&lt;/p&gt; --&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row no-gutters&quot;&gt;
+          &lt;div class=&quot;col-lg-6 venue-map&quot;&gt;
+         &lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14098.796970991662!2d-82.4567407!3d27.941864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa4db04d308df22b6!2sTampa+Convention+Center!5e0!3m2!1sen!2sin!4v1543490570357&quot; width=&quot;600&quot; height=&quot;450&quot; frameborder=&quot;0&quot; style=&quot;border:0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-6 venue-info&quot;&gt;
+            &lt;div class=&quot;row justify-content-center&quot;&gt;
+              &lt;div class=&quot;col-11 col-lg-8&quot;&gt;
+              	&lt;br/&gt;
+    
+
+                &lt;h3 style=&quot;font-size: 32px;&quot;&gt;Tampa Convetion Center,&lt;/h3&gt;
+                &lt;h3 style=&quot;font-size: 32px; text-align: center;&quot;&gt;Florida&lt;/h3&gt;
+                &lt;!-- &lt;p&gt;Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim nesciunt quia velit.&lt;/p&gt; --&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class=&quot;container-fluid venue-gallery-container&quot;&gt;
+        &lt;div class=&quot;row no-gutters&quot;&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/1.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/2.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/3.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/7.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/7.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/5.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/6.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/4.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-4&quot;&gt;
+            &lt;div class=&quot;venue-gallery&quot;&gt;
+              &lt;a href=&quot;img/venue-gallery/8.jpg&quot; class=&quot;venobox&quot; data-gall=&quot;venue-gallery&quot;&gt;
+                &lt;img src=&quot;img/venue-gallery/8.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid&quot;&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt; --&gt;
+
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+
+    &lt;/div&gt;
+
+    
+    &lt;!--==========================
+      Sponsors Section
+    ============================--&gt;
+    &lt;section id=&quot;sponsors&quot; class=&quot;section-with-bg wow fadeInUp&quot;&gt;
+
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Sponsors and Supporters&lt;/h2&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row no-gutters sponsors-wrap clearfix&quot;&gt;
+
+          &lt;div class=&quot;col-lg-4 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/9.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;!-- &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/2.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/3.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/4.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/5.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/6.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/7.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          
+          &lt;div class=&quot;col-lg-3 col-md-4 col-xs-6&quot;&gt;
+            &lt;div class=&quot;sponsor-logo&quot;&gt;
+              &lt;img src=&quot;img/sponsors/8.png&quot; class=&quot;img-fluid&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt; --&gt;
+
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+
+    &lt;!--==========================
+      F.A.Q Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&quot;faq&quot; class=&quot;wow fadeInUp&quot;&gt;
+
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;F.A.Q &lt;/h2&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row justify-content-center&quot;&gt;
+          &lt;div class=&quot;col-lg-9&quot;&gt;
+              &lt;ul id=&quot;faq-list&quot;&gt;
+
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; class=&quot;collapsed&quot; href=&quot;#faq1&quot;&gt;Non consectetur a erat nam at lectus urna duis? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq1&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; href=&quot;#faq2&quot; class=&quot;collapsed&quot;&gt;Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq2&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; href=&quot;#faq3&quot; class=&quot;collapsed&quot;&gt;Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq3&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; href=&quot;#faq4&quot; class=&quot;collapsed&quot;&gt;Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq4&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; href=&quot;#faq5&quot; class=&quot;collapsed&quot;&gt;Tempus quam pellentesque nec nam aliquam sem et tortor consequat? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq5&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+                &lt;li&gt;
+                  &lt;a data-toggle=&quot;collapse&quot; href=&quot;#faq6&quot; class=&quot;collapsed&quot;&gt;Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? &lt;i class=&quot;fa fa-minus-circle&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;div id=&quot;faq6&quot; class=&quot;collapse&quot; data-parent=&quot;#faq-list&quot;&gt;
+                    &lt;p&gt;
+                      Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+                    &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+      
+              &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+    &lt;/section&gt; --&gt;
+
+    &lt;!--==========================
+      Subscribe Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&quot;subscribe&quot;&gt;
+      &lt;div class=&quot;container wow fadeInUp&quot;&gt;
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Newsletter&lt;/h2&gt;
+          &lt;p&gt;Rerum numquam illum recusandae quia mollitia consequatur.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;form method=&quot;POST&quot; action=&quot;#&quot;&gt;
+          &lt;div class=&quot;form-row justify-content-center&quot;&gt;
+            &lt;div class=&quot;col-auto&quot;&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Enter your Email&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-auto&quot;&gt;
+              &lt;button type=&quot;submit&quot;&gt;Subscribe&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt; --&gt;
+
+    &lt;!--==========================
+      Buy Ticket Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&quot;buy-tickets&quot; class=&quot;section-with-bg wow fadeInUp&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Buy Tickets&lt;/h2&gt;
+          &lt;p&gt;Velit consequatur consequatur inventore iste fugit unde omnis eum aut.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col-lg-4&quot;&gt;
+            &lt;div class=&quot;card mb-5 mb-lg-0&quot;&gt;
+              &lt;div class=&quot;card-body&quot;&gt;
+                &lt;h5 class=&quot;card-title text-muted text-uppercase text-center&quot;&gt;Standard Access&lt;/h5&gt;
+                &lt;h6 class=&quot;card-price text-center&quot;&gt;$150&lt;/h6&gt;
+                &lt;hr&gt;
+                &lt;ul class=&quot;fa-ul&quot;&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Regular Seating&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Coffee Break&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Custom Badge&lt;/li&gt;
+                  &lt;li class=&quot;text-muted&quot;&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;Community Access&lt;/li&gt;
+                  &lt;li class=&quot;text-muted&quot;&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;Workshop Access&lt;/li&gt;
+                  &lt;li class=&quot;text-muted&quot;&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;After Party&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;hr&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-toggle=&quot;modal&quot; data-target=&quot;#buy-ticket-modal&quot; data-ticket-type=&quot;standard-access&quot;&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-lg-4&quot;&gt;
+            &lt;div class=&quot;card mb-5 mb-lg-0&quot;&gt;
+              &lt;div class=&quot;card-body&quot;&gt;
+                &lt;h5 class=&quot;card-title text-muted text-uppercase text-center&quot;&gt;Pro Access&lt;/h5&gt;
+                &lt;h6 class=&quot;card-price text-center&quot;&gt;$250&lt;/h6&gt;
+                &lt;hr&gt;
+                &lt;ul class=&quot;fa-ul&quot;&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Regular Seating&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Coffee Break&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Custom Badge&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Community Access&lt;/li&gt;
+                  &lt;li class=&quot;text-muted&quot;&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;Workshop Access&lt;/li&gt;
+                  &lt;li class=&quot;text-muted&quot;&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;After Party&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;hr&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-toggle=&quot;modal&quot; data-target=&quot;#buy-ticket-modal&quot; data-ticket-type=&quot;pro-access&quot;&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt; --&gt;
+          &lt;!-- Pro Tier --&gt;
+          &lt;!-- &lt;div class=&quot;col-lg-4&quot;&gt;
+            &lt;div class=&quot;card&quot;&gt;
+              &lt;div class=&quot;card-body&quot;&gt;
+                &lt;h5 class=&quot;card-title text-muted text-uppercase text-center&quot;&gt;Premium Access&lt;/h5&gt;
+                &lt;h6 class=&quot;card-price text-center&quot;&gt;$350&lt;/h6&gt;
+                &lt;hr&gt;
+                &lt;ul class=&quot;fa-ul&quot;&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Regular Seating&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Coffee Break&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Custom Badge&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Community Access&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;Workshop Access&lt;/li&gt;
+                  &lt;li&gt;&lt;span class=&quot;fa-li&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;After Party&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;hr&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-toggle=&quot;modal&quot; data-target=&quot;#buy-ticket-modal&quot; data-ticket-type=&quot;premium-access&quot;&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt; --&gt;
+
+      &lt;!-- Modal Order Form --&gt;
+      &lt;!-- &lt;div id=&quot;buy-ticket-modal&quot; class=&quot;modal fade&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h4 class=&quot;modal-title&quot;&gt;Buy Tickets&lt;/h4&gt;
+              &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;
+                &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+              &lt;form method=&quot;POST&quot; action=&quot;#&quot;&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                  &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;your-name&quot; placeholder=&quot;Your Name&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                  &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;your-email&quot; placeholder=&quot;Your Email&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                  &lt;select id=&quot;ticket-type&quot; name=&quot;ticket-type&quot; class=&quot;form-control&quot; &gt;
+                    &lt;option value=&quot;&quot;&gt;-- Select Your Ticket Type --&lt;/option&gt;
+                    &lt;option value=&quot;standard-access&quot;&gt;Standard Access&lt;/option&gt;
+                    &lt;option value=&quot;pro-access&quot;&gt;Pro Access&lt;/option&gt;
+                    &lt;option value=&quot;premium-access&quot;&gt;Premium Access&lt;/option&gt;
+                  &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/form&gt;
+            &lt;/div&gt; --&gt;
+          &lt;!-- &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/section&gt; --&gt;
+
+    &lt;!--==========================
+      Contact Section
+    ============================--&gt;
+    &lt;!-- &lt;section id=&quot;contact&quot; class=&quot;section-bg wow fadeInUp&quot;&gt;
+
+      &lt;div class=&quot;container&quot;&gt;
+
+        &lt;div class=&quot;section-header&quot;&gt;
+          &lt;h2&gt;Contact Us&lt;/h2&gt; --&gt;
+          &lt;!-- &lt;p&gt;Nihil officia ut sint molestiae tenetur.&lt;/p&gt; --&gt;
+        &lt;!-- &lt;/div&gt;
+
+        &lt;div class=&quot;row contact-info&quot;&gt;
+
+          &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;div class=&quot;contact-address&quot;&gt;
+              &lt;i class=&quot;ion-ios-location-outline&quot;&gt;&lt;/i&gt;
+              &lt;h3&gt;Address&lt;/h3&gt;
+              &lt;address&gt;A108 Adam Street, NY 535022, USA&lt;/address&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;div class=&quot;contact-phone&quot;&gt;
+              &lt;i class=&quot;ion-ios-telephone-outline&quot;&gt;&lt;/i&gt;
+              &lt;h3&gt;Phone Number&lt;/h3&gt;
+              &lt;p&gt;&lt;a href=&quot;tel:+155895548855&quot;&gt;+1 5589 55488 55&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-md-4&quot;&gt;
+            &lt;div class=&quot;contact-email&quot;&gt;
+              &lt;i class=&quot;ion-ios-email-outline&quot;&gt;&lt;/i&gt;
+              &lt;h3&gt;Email&lt;/h3&gt;
+              &lt;p&gt;&lt;a href=&quot;mailto:info@example.com&quot;&gt;info@example.com&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt; --&gt;
+
+        &lt;!-- &lt;div class=&quot;form&quot;&gt;
+          &lt;div id=&quot;sendmessage&quot;&gt;Your message has been sent. Thank you!&lt;/div&gt;
+          &lt;div id=&quot;errormessage&quot;&gt;&lt;/div&gt;
+          &lt;form action=&quot;&quot; method=&quot;post&quot; role=&quot;form&quot; class=&quot;contactForm&quot;&gt;
+            &lt;div class=&quot;form-row&quot;&gt;
+              &lt;div class=&quot;form-group col-md-6&quot;&gt;
+                &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;form-control&quot; id=&quot;name&quot; placeholder=&quot;Your Name&quot; data-rule=&quot;minlen:4&quot; data-msg=&quot;Please enter at least 4 chars&quot; /&gt;
+                &lt;div class=&quot;validation&quot;&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-group col-md-6&quot;&gt;
+                &lt;input type=&quot;email&quot; class=&quot;form-control&quot; name=&quot;email&quot; id=&quot;email&quot; placeholder=&quot;Your Email&quot; data-rule=&quot;email&quot; data-msg=&quot;Please enter a valid email&quot; /&gt;
+                &lt;div class=&quot;validation&quot;&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;subject&quot; id=&quot;subject&quot; placeholder=&quot;Subject&quot; data-rule=&quot;minlen:4&quot; data-msg=&quot;Please enter at least 8 chars of subject&quot; /&gt;
+              &lt;div class=&quot;validation&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;textarea class=&quot;form-control&quot; name=&quot;message&quot; rows=&quot;5&quot; data-rule=&quot;required&quot; data-msg=&quot;Please write something for us&quot; placeholder=&quot;Message&quot;&gt;&lt;/textarea&gt;
+              &lt;div class=&quot;validation&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;text-center&quot;&gt;&lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;&lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt; --&gt;
+
+     &lt;!--  &lt;/div&gt;
+    &lt;/section&gt;#contact
+
+  &lt;/main&gt; --&gt;
+
+
+  &lt;!--==========================
+    Footer
+  ============================--&gt;
+  &lt;!-- &lt;footer id=&quot;footer&quot;&gt;
+    &lt;div class=&quot;footer-top&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 footer-info&quot;&gt;
+            &lt;img src=&quot;img/logo.png&quot; alt=&quot;TheEvenet&quot;&gt;
+            &lt;p&gt;In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis accusamus repellat cumque.&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 footer-links&quot;&gt;
+            &lt;h4&gt;Useful Links&lt;/h4&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;About us&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Services&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Terms of service&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Privacy policy&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 footer-links&quot;&gt;
+            &lt;h4&gt;Useful Links&lt;/h4&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;About us&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Services&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Terms of service&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;/i&gt; &lt;a href=&quot;#&quot;&gt;Privacy policy&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;col-lg-3 col-md-6 footer-contact&quot;&gt;
+            &lt;h4&gt;Contact Us&lt;/h4&gt;
+            &lt;p&gt;
+              A108 Adam Street &lt;br&gt;
+              New York, NY 535022&lt;br&gt;
+              United States &lt;br&gt;
+              &lt;strong&gt;Phone:&lt;/strong&gt; +1 5589 55488 55&lt;br&gt;
+              &lt;strong&gt;Email:&lt;/strong&gt; info@example.com&lt;br&gt;
+            &lt;/p&gt;
+
+            &lt;div class=&quot;social-links&quot;&gt;
+              &lt;a href=&quot;#&quot; class=&quot;twitter&quot;&gt;&lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;a href=&quot;#&quot; class=&quot;facebook&quot;&gt;&lt;i class=&quot;fa fa-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;a href=&quot;#&quot; class=&quot;instagram&quot;&gt;&lt;i class=&quot;fa fa-instagram&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;a href=&quot;#&quot; class=&quot;google-plus&quot;&gt;&lt;i class=&quot;fa fa-google-plus&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;a href=&quot;#&quot; class=&quot;linkedin&quot;&gt;&lt;i class=&quot;fa fa-linkedin&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;copyright&quot;&gt;
+        &amp;copy; Copyright &lt;strong&gt;TheEvent&lt;/strong&gt;. All Rights Reserved
+      &lt;/div&gt;
+      &lt;div class=&quot;credits&quot;&gt; --&gt;
+        &lt;!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=TheEvent
+        --&gt;
+        &lt;!-- Designed by &lt;a href=&quot;https://bootstrapmade.com/&quot;&gt;BootstrapMade&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt; --&gt;&lt;!-- #footer --&gt;
+
+  &lt;a href=&quot;#&quot; class=&quot;back-to-top&quot;&gt;&lt;i class=&quot;fa fa-angle-up&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+
+  &lt;!-- JavaScript Libraries --&gt;
+  &lt;script src=&quot;lib/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/jquery/jquery-migrate.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/bootstrap/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/easing/easing.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/superfish/hoverIntent.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/superfish/superfish.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/wow/wow.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/venobox/venobox.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/owlcarousel/owl.carousel.min.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Contact Form JavaScript File --&gt;
+  &lt;script src=&quot;contactform/contactform.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- Template Main Javascript File --&gt;
+  &lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</textarea>
+                        
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <script type="text/plain" id="general_encoding_changed_template">
+            <p>
+                The system was unable to save your document in “{old_charset}” encoding. Most likely, your document contains characters incompatible with “{old_charset}”.
+            </p>
+
+            <p>
+                cPanel has upgraded your document to “{new_charset}” encoding. Please verify that the file opens correctly in your application.
+            </p>
+
+            <p>
+                To learn more about file encoding, visit <a href="http://go.cpanel.net/encoding">http://go.cpanel.net/encoding</a>.
+            </p>
+        </script>
+
+        
+
+<img src="/cPanel_magic_revision_1423101102/cjt/images/progress_bar.gif" class="preloadedImage" />
+<img src="/cPanel_magic_revision_1423100867/cjt/images/check.png" class="preloadedImage" />
+
+<script id="cjt_error_dialog_template" type="text/plain">
+<div class="error_notice">{error_html}</div>
+</script>
+
+<script id="cjt_http_error_dialog_template" type="text/plain">
+<div class="error_notice http_error_notice">
+    <div class="http_status">{status}: {status_text_html}</div>
+    <div><a href="javascript:void(0)" class="http_error_details_link">Show/Hide Details</a></div>
+    <div class="cjt_error_details" style="display:none">
+        <div class="url">URL ({method}):<pre>{url_html}</pre></div>
+        <div class="post">Body: <pre>{post_html}</pre></div>
+        <div class="response">Response:<pre>{response_html}</pre></div>
+    </div>
+</div>
+</script>
+
+<script>
+CPANEL.application = "cpaneld";
+YAHOO.lang.augmentObject( CPANEL.Locale.prototype.LEXICON, {"Cancel":"Cancel","Notice":"Notice","Success!":"Success!","HTTP ERROR":"HTTP ERROR","An unknown error occurred.":"An unknown error occurred.","ERROR":"ERROR","Error":"Error","Proceed":"Proceed","Processing …":"Processing …","OK":"OK"} );
+</script>
+<script src="/cPanel_magic_revision_1472757084/cjt/ajaxapp-min.js"></script>
+
+        <script type="text/javascript">
+            var CHARSET = document.sform.charset.value;
+
+            if ( !window.LEXICON ) {
+                LEXICON = {};
+            }
+
+            LEXICON.charset_changed = "Character Encoding Change";
+            LEXICON.confirm_close   = "You have unsaved changes. Are you sure you want to close this window?";
+            LEXICON.reloading       = "Reloading…";
+
+            function loadfile(clicked_el) {
+                var textarea = DOM.get("codewindow");
+
+                if (textarea.value !== textarea.defaultValue) {
+                    var sure = confirm("Are you sure you wish to open a new file? You will lose any changes you have made.");
+                    if (!sure) {
+                        return;
+                    }
+                }
+
+                var filen = document.sform.path.value;
+                var fpath = filen.split('/');;
+                var filename = fpath.pop();
+                var dir = fpath.join('/');
+                var sdir = encodeURIComponent(dir);
+                var sfilename = encodeURIComponent(filename);
+                var charset = document.getElementById('charset').value;
+
+                var pp = new CPANEL.ajax.Progress_Panel( DOM.generateId(), {
+                    status_html : "Reloading…",
+                    effect: CPANEL.ajax.FADE_MODAL
+                } );
+
+                if (clicked_el) {
+                    pp.show_from_source(clicked_el);
+                }
+                else {
+                    pp.show();
+                }
+
+                document.location.href="?dir=" + sdir + "&file=" + sfilename + '&file_charset=' + charset;
+            }
+
+            var LAST_NOTICE = null;
+
+            function loadfdata(clicked_el) {
+                var path     = DOM.get("path");
+
+                if ( CODEWINDOW.value === CODEWINDOW.defaultValue && path.value === path.defaultValue ) {
+                    LAST_NOTICE = new CPANEL.ajax.Dynamic_Notice({content:"You have made no changes to save.", level:"info", replaces:LAST_NOTICE});
+                    return;
+                }
+
+                var match = path.value.match(/^(.+)\/([^\/]+)$/);
+                if ( !match ) {
+                    LAST_NOTICE = new CPANEL.ajax.Dynamic_Notice({content:"Invalid path.", level:"error", replaces:LAST_NOTICE});
+                    return;
+                }
+
+                var api_params = {
+                    module:   "Fileman",
+                    func:     "savefile",
+                    data:     {
+                        dir:           match[1],
+                        filename:      match[2],
+                        content:       window.editAreaLoader ? editAreaLoader.getValue("codewindow") : document.sform.page.value,
+                        utf8_fallback: 1,
+                        charset:       CHARSET
+                    },
+                    progress_panel: {
+                        zIndex:      2500,
+                        show_status: true,
+                        source_el:   clicked_el,
+                        status_html: "Saving “{the_file}” …".replace('{the_file}',match[2].html_encode()),
+                        success_notice_options: { replaces:LAST_NOTICE },
+                        before_success: function(result) {
+                            CODEWINDOW.defaultValue = CODEWINDOW.value;
+
+                            return check_for_encoding_change.call(
+                                this,
+                                CPANEL.ajax.templates.general_encoding_changed_template,
+                                result.cpanel_data
+                            );
+                        }
+                    },
+                    callback: {
+                        success: function() { LAST_NOTICE = req.notice }
+                    }
+                };
+
+                var req = CPANEL.api( api_params );
+
+                return false;
+            }
+        </script>
+
+        <script type="text/javascript" src="/cPanel_magic_revision_1512498249/frontend/gl_paper_lantern/libraries/edit_area/edit_area/edit_area_full.js"></script>
+        <script type="text/javascript" src="/cPanel_magic_revision_1407781886/frontend/gl_paper_lantern/js/edit_area_resizer.js"></script>
+        <script>
+        var editAreaEl='codewindow';
+        var lastResizeTime=0;
+        var lastResizeRequestTime=0;
+
+        function unhide_codewindow() {
+            DOM.setStyle("codewindow","visibility","");
+            if ( YAHOO.env.ua.ie ) fix_ie_margin();
+            set_link_for_code();
+        };
+
+        var EditArea_config = {
+        
+            EA_load_callback: "unhide_codewindow",
+        
+            EA_toggle_on_callback: "set_link_for_code",
+            EA_toggle_off_callback: "set_link_for_text",
+            id: editAreaEl,
+            start_highlight: true,
+            allow_resize: "both",
+            allow_toggle: false,
+            language: "en",
+            toolbar: "search, go_to_line, |, undo, redo, |, select_font, |, syntax_selection, |, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help",
+            syntax: "html",
+            word_wrap: true
+        };
+
+        function load_EditArea() {
+            //Set the code textarea width to 800px temporarily
+            //so EditArea will size the edit area to that width.
+            //This mimicks behavior of the old separate editit_code.html.
+            if ( !CODEWINDOW) CODEWINDOW = DOM.get(editAreaEl);
+            CODEWINDOW.style.visibility = "";
+            CODEWINDOW.style.width = "800px";
+
+            editAreaLoader.init(EditArea_config);
+
+        
+            doResizeSoon();
+        
+        }
+
+        function fix_ie_margin() {
+            //work around a bug in EditArea that sets a marginTop when it shouldn't.
+            //The EA code has an exception for IE>7, but it kills detecting IE>7 early
+            //on presuming that it will be able to force IE7 compatibility mode.
+            //(Which it can't always do, actually.)
+            if ( YAHOO.env.ua.ie > 7 ) {
+                var iframe_window = DOM.get("frame_codewindow");
+                iframe_window.contentDocument.getElementById("textarea").style.marginTop = "";
+            }
+        }
+
+        function set_link_for_code() {
+            DOM.get("switch_editor_control").innerHTML = "Use Text Editor";
+            if ( YAHOO.env.ua.ie ) fix_ie_margin();
+            window.ea_shown = true;
+        }
+        function set_link_for_text() {
+            DOM.get("switch_editor_control").innerHTML = "Use Code Editor";
+        }
+
+        function toggle_EditArea(link) {
+            var ea = editAreas[editAreaEl];
+
+            if (!ea || !ea.displayed) {
+        
+                editAreaLoader.toggle_on(editAreaEl);
+                doResizeSoon();
+                EVENT.removeListener( window, "resize", textarea_sizer );
+                EVENT.addListener( window, "resize", doResizeSoon );
+            }
+            else {
+                editAreaLoader.toggle_off(editAreaEl);
+                CODEWINDOW.wrap = "soft";
+                EVENT.removeListener( window, "resize", doResizeSoon );
+                EVENT.addListener( window, "resize", textarea_sizer );
+                textarea_sizer();
+            }
+        }
+
+        var CODEWINDOW;
+        var codewindow_padding = YAHOO.env.ua.ie ? 3 : 0;
+        function textarea_sizer() {
+            var pos = DOM.getXY(CODEWINDOW);
+            var viewport_height = DOM.getViewportHeight();
+            var viewport_width  = DOM.getViewportWidth();
+            CODEWINDOW.style.width  = (viewport_width  - pos[0] - codewindow_padding) + "px";
+            CODEWINDOW.style.height = (viewport_height - pos[1] - codewindow_padding) + "px";
+        }
+
+        // var editor_icons = {
+        //     code: "/cPanel_magic_revision_0/frontend/gl_paper_lantern/filemanager/img/icons/codeEditorB.gif",
+        //     text: "/cPanel_magic_revision_0/frontend/gl_paper_lantern/filemanager/img/icons/Document 2 Edit 2.gif"
+        // };
+
+        EVENT.throwErrors = true;
+        EVENT.onDOMReady( function() {
+            CODEWINDOW = DOM.get(editAreaEl);
+            //var img = document.createElement("img");
+            //img.style.display = "none";
+        
+            //img.src = editor_icons.code;
+            EVENT.addListener(window, "resize", doResizeSoon);
+        
+            //document.body.appendChild(img);
+        } );
+
+        YAHOO.util.Event.addListener(window, "load", load_EditArea);
+        //YAHOO.util.Event.addListener(window, "load", textarea_sizer);
+        </script>
+
+    </body>
+</html>
